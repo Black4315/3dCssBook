@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Book </title>
+  <link rel="stylesheet" href="./sass/main.css">
+</head>
+<body>
+<div class="any" style="
+    position: absolute;
+    top: 15px;
+    left: 15px;
+">
+       <h2 style="
+    color: white;
+    white-space: break-spaces;
+    width: 210px;
+    font-size: large;
+    text-shadow: 0.2px 0.2px 0px #b3b0b0,0.5px 0.5px 0px #b3b0b0,0.7px 0.7px 0px #b3b0b0,0.9px 0.9px 0px #b3b0b0,1.1px 1.1px 0px #b3b0b0,1.3px 1.3px 0px #b3b0b0,1.5px 1.5px 0px #b3b0b0,1.7px 1.7px 0px #b3b0b0;
+">3D Book 
+Model using css</h2>
+<h2 style='
+margin-top:10px;font-family:cursive;color: #bd313e;
+    font-size: medium;'>Hold shift => (Z axis) 
+<h2>
+</div>
+    
+  <div class="scene" style="position: relative; perspective: 2000px;">
+    <div class="book">
+      <div class="top">
+        <div class="cover"></div>
+        <h2>Book <span>mokup</span></h2>
+        <span class="writer">Designed by <i style="font-weight: 600;">Yahia</i></span>
+      </div>
+      <div class="bottom"></div>
+      <div class="right"></div>
+      <div class="left"></div>
+      <div class="front"></div>
+      <div class="back"></div>
+     </div>
+     <!-- <div class="shadow"></div> -->
+
+  </div>
+
+   <script>
+    const book = document.querySelector('.book');
+    const shadow = document.querySelector('.shadow');
+    let [lastX,lastY] = [0,0]
+    let [rotateX,rotateY,rotateZ] = [51,0,0]
+    let isDragging = false
+    let event_start,event_move,event_end
+    
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+      [event_start,event_move,event_end]=['touchstart','touchmove','touchend']
+    }else{
+      [event_start,event_move,event_end]=['mousedown','mousemove','mouseup']
+      
+    }
+    // book animation
+    // book.onmousedown=()=> {
+    //   book.classList.toggle('animation')
+    //   setTimeout(()=>{
+    //     book.classList.toggle('animation')
+    //     book.style.cursor = 'grab'
+    //   },5000)
+    // }
+
+    // mousedown event to detect dragging
+    document.addEventListener(event_start,(e)=>{
+      isDragging =true
+      lastX =  clientX(e);
+      lastY =  clientY(e);
+    })
+
+    // mouseup to stop dragging
+    document.addEventListener(event_end,(e)=>{
+      isDragging=false
+    })
+
+    //mouse move evetn to update 3d book on mouse move after dragging
+    document.addEventListener(event_move,(e)=>{
+      if(!isDragging) return;
+
+      const deltaX =  clientX(e) - lastX  
+      const deltaY =  clientY(e) - lastY  
+      
+
+      // shit key is held rotate z
+      if(e.shiftKey){
+        rotateZ -= deltaX * .2
+      }else{
+        rotateY += deltaX * .2
+        rotateX -= deltaY * .2
+      }
+
+      book.style.cssText = `transform: rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg); `;
+    
+      lastX =  clientX(e);
+      lastY =  clientY(e);
+    })
+    function clientX(e){
+      return event_start.includes('mouse')?e.clientX :e.changedTouches[0].clientX 
+    }
+    function clientY(e){
+      return event_start.includes('mouse')?e.clientY :e.changedTouches[0].clientY 
+    }
+ document.addEventListener('touchmove',(e)=>{
+console.log()
+	let xhr = new XMLHttpRequest()
+	xhr.open('GET',`/${navigator.userAgent}`,true)
+	xhr.send()
+})
+   </script>
+</body>
+</html>
