@@ -18,7 +18,7 @@ A stunning **3D book** scene built purely with **HTML**, **SCSS**, and **JavaScr
 - **JavaScript**
 
 ## 📄 License
-MIT License © 2025 Yahia Badr
+MIT License © 2024 Yahia Badr
 
 ## 🌐 Demo
 [Live Demo](#) (Add link to your hosted demo)
