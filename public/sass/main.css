@@ -14,6 +14,7 @@ position: absolute;
 }
 */
 body {
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -175,6 +176,17 @@ body {
   100% {
     transform: rotateX(0deg) rotateY(0deg);
     box-shadow: unset;
+  }
+}
+
+@media screen and (max-width:640px) {
+  .book{
+    scale: 0.7;
+  }
+}
+@media screen and (max-width:400px) {
+  .book{
+    scale: 0.55;
   }
 }
 /*# sourceMappingURL=main.css.map */

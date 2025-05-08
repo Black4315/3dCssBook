@@ -46,6 +46,7 @@ margin-top:10px;font-family:cursive;color: #bd313e;
    <script>
     const book = document.querySelector('.book');
     const shadow = document.querySelector('.shadow');
+    const speed = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)? 0.5:0.2
     let [lastX,lastY] = [0,0]
     let [rotateX,rotateY,rotateZ] = [51,0,0]
     let isDragging = false
@@ -88,10 +89,10 @@ margin-top:10px;font-family:cursive;color: #bd313e;
 
       // shit key is held rotate z
       if(e.shiftKey){
-        rotateZ -= deltaX * .2
+        rotateZ -= deltaX * speed
       }else{
-        rotateY += deltaX * .2
-        rotateX -= deltaY * .2
+        rotateY += deltaX * speed
+        rotateX -= deltaY * speed
       }
 
       book.style.cssText = `transform: rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg); `;
