@@ -1,4 +1,4 @@
-# 📖 3dCssBook
+# 3D Book Powerd by CSS 
 
 A stunning **3D book** scene built purely with **HTML**, **SCSS**, and **JavaScript**. This project demonstrates a realistic 3D effect of a book using CSS and smooth transitions to bring the scene to life.
 
@@ -11,7 +11,10 @@ A stunning **3D book** scene built purely with **HTML**, **SCSS**, and **JavaScr
 
 ## Snapshot
 
-![3D Book Snapshot](assets/screenshot.png)
+![3D Book Snapshot](./public/assets/screenshot.png)
+
+## installation 
+Every thing in public folder
 
 ## Tech Stack
 - **HTML**
